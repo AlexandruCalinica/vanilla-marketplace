@@ -1,0 +1,1 @@
+export const cartItem = r => (`<span>${r}</span><span>1</span>`);

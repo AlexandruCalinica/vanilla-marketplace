@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>To Do</title>
+    <script src="https://kit.fontawesome.com/94a1553214.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../index.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                  <i class="fas fa-shopping-cart">
+                    <span class="badge badge-pill badge-warning" id="cart-counter">0</span>
+                  </i>
+                </button>
+                <ul class="dropdown-menu" id="cart" aria-labelledby="dropdownMenu2"></ul>
+              </div>
+            </li>
+            
+          </ul>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="navbar shadow-sm p-4">
+      <div class="categoryList">
+        <a href="" class="text-decoration-none">
+          <h6 class="categoryItem">Category 1</h6>
+        </a>
+        <a href="" class="text-decoration-none">
+          <h6 class="categoryItem">Category 2</h6>
+        </a>
+        <a href="" class="text-decoration-none">
+          <h6 class="categoryItem">Category 3</h6>
+        </a>
+        <a href="" class="text-decoration-none">
+          <h6 class="categoryItem">Category 4</h6>
+        </a>
+        <a href="" class="text-decoration-none">
+          <h6 class="categoryItem">Category 5</h6>
+        </a>
+      </div>
+    </nav>
+
+    <div class="p-4 shadow-none bg-light">
+      <form class="form-inline" action="">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-6 pl-4 pr-0">
+              <input type="text" class="form-control w-100" name="search" placeholder="search for watch brand name or model..."/>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-success pl-5 pr-5" type="submit"><small>SEARCH</small></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+      <div id="app" class="container-fluid mt-3">
+        <div class="row">
+          <div class="col-sm-3 pl-4 pr-0">
+            <div class="card p-3 mt-2 shadow-sm border-0 rounded-0 bg-light">
+              <p class="lead"><small><b>FILTER RESULTS</b></small></p>
+
+              <div class="accordion d-flex flex-column" id="accordion">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <small>BRAND</small>
+                      </button>
+                    </h2>
+                <form>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="brand" data-parent="#accordion">
+                      <!-- filter items -->
+                  </div>
+              </div>
+
+              <div class="accordion d-flex flex-column" id="accordion2">
+                <h2 class="mb-0">
+                  <button class="btn btn-link text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <small>MODEL</small>
+                  </button>
+                </h2>
+
+                <div id="collapseTwo" class="collapse show" aria-labelledby="model" data-parent="#accordion2">
+                  <div class="d-flex flex-column">
+                    <div class="form-check-inline mr-0">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+                      <label class="form-check-label" for="defaultCheck6">
+                        <small>Model 1</small>
+                      </label>
+                      <span class="flex-grow-1"></span>
+                      <p class="m-0"><small>(1)</small></p>
+                    </div>
+                    <div class="form-check-inline mr-0">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                      <label class="form-check-label" for="defaultCheck7">
+                        <small>Model 2</small>
+                      </label>
+                      <span class="flex-grow-1"></span>
+                      <p class="m-0"><small>(3)</small></p>
+                    </div>
+                    <div class="form-check-inline mr-0">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck8">
+                      <label class="form-check-label" for="defaultCheck8">
+                        <small>Model 3</small>
+                      </label>
+                      <span class="flex-grow-1"></span>
+                      <p class="m-0"><small>(5)</small></p>
+                    </div>
+                    <div class="form-check-inline mr-0">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
+                      <label class="form-check-label" for="defaultCheck9">
+                        <small>Model 4</small>
+                      </label>
+                      <span class="flex-grow-1"></span>
+                      <p class="m-0"><small>(2)</small></p>
+                    </div>
+                    <div class="form-check-inline mr-0">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
+                      <label class="form-check-label" for="defaultCheck10">
+                        <small>Model 5</small>
+                      </label>
+                      <span class="flex-grow-1"></span>
+                      <p class="m-0"><small>(2)</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion d-flex flex-column" id="accordion3">
+                <h2 class="mb-0">
+                  <button class="btn btn-link text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                    <small>GENDER</small>
+                  </button>
+                </h2>
+
+                <div id="collapseThree" class="collapse show" aria-labelledby="model" data-parent="#accordion3">
+                  <div class="d-flex flex-column">
+                    <div class="form-check-inline mr-0">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
+                      <label class="form-check-label" for="defaultCheck11">
+                        <small>MALE</small>
+                      </label>
+                      <span class="flex-grow-1"></span>
+                      <p class="m-0"><small>(12)</small></p>
+                    </div>
+                    <div class="form-check-inline mr-0">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
+                      <label class="form-check-label" for="defaultCheck12">
+                        <small>FEMALE</small>
+                      </label>
+                      <span class="flex-grow-1"></span>
+                      <p class="m-0"><small>(7)</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">filter</button>
+              </form>
+
+            </div>
+          </div>
+          <div class="col-sm-9 mt-3">
+            <h1 class="lead ml-2">Browsing products for Rolex - 300 results</h1>
+            <form class="mb-3 p-2">
+              <div class="form-row">
+                <div class="col-md-3">
+                  <label for="exampleFormControlSelect1"><small>Sort by</small></label>
+                  <select class="form-control form-control-sm formSelect" id="exampleFormControlSelect1">
+                    <option>Price: Low-High</option>
+                    <option>Price: High-Low</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label for="exampleFormControlSelect1"><small>Results per page</small></label>
+                  <select class="form-control form-control-sm formSelect" id="exampleFormControlSelect2">
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>50</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="list-group" id="watches-wrapp">
+            </div>
+
+
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end mt-4 mr-2">
+                <li class="page-item disabled"><span class="page-link"><small>page 1 of 2</small></span></li>
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+    <script src="watches.js" type="module"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
