@@ -1,0 +1,9 @@
+const express = require("express");
+const userControllers = require("../controllers/users");
+const router = express.Router();
+
+router.get('/:id', userControllers.getUser);
+router.post('/signup', userControllers.addUser);
+router.put('/:id', userControllers.addToCart);
+
+module.exports = router;
