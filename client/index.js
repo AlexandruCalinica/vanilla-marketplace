@@ -27,6 +27,6 @@ function signup(url, email, password) {
   })
     .then(r => r.json())
     .then(({ token }) => sessionStorage.setItem("token", token))
-    .then(r => window.location.assign("/src/watches/watches.html"))
+    .then(r => window.location.assign("/client/src/watches/watches.html"))
     .catch(err => console.error(err));
 }

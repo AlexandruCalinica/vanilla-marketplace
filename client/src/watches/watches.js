@@ -24,7 +24,7 @@ import { Filter } from '../../queries/filter.js';
   const filter = new Filter(filterWrapp);
 
   // Event handler 
-  const showDetails = id => window.location.assign(`/src/watches/watch.html?id=${id}`);
+  const showDetails = id => window.location.assign(`/client/src/watches/watch.html?id=${id}`);
   // Array of event handlers
   const handlers = [ showDetails, cart.add ];
   // IDs used for targeting elements prior attaching event handlers
