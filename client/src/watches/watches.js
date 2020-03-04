@@ -1,8 +1,10 @@
-// addToCart mutation — event handler
+// User class
+import { User } from '../../queries/user.js';
+// Cart class
 import { Cart } from '../../queries/cart.query.js';
-// getWatches query
+// Watches class
 import { Watches } from "../../queries/watches.query.js";
-// use Filter widget
+// Filter class
 import { Filter } from '../../queries/filter.js';
 
 
@@ -17,7 +19,8 @@ import { Filter } from '../../queries/filter.js';
   const filterWrapp = document.getElementById('collapseOne');
 
 
-
+  // Instantiate User widget
+  const user = new User();
   // Instantiate Cart widget
   const cart = new Cart(cartWrapper);
   // Instantiate Filter widget
@@ -39,15 +42,18 @@ import { Filter } from '../../queries/filter.js';
   const searchString = urlParams.get('search');
   // Get iterator containing filter params keys
   const filterEntries = urlParams.keys();
-  // empty array to store 
+  // empty array to store the keys
   let filterKeys = [];
+  // iterate and push the keys to the emoty array
   for (let key of filterEntries) {
     filterKeys.push(key);
   }
 
-
+  // method to get distinct brand names from the db to populate the filter widget
   filter.getNames();
+  // append the filter widget to the DOM
   filter.use();
+
 
   if (searchString) {
     // search for a specific term, fetch a list of all occurences and render to DOM

@@ -5,5 +5,6 @@ const router = express.Router();
 router.get('/:id', userControllers.getUser);
 router.post('/signup', userControllers.addUser);
 router.put('/:id', userControllers.addToCart);
+router.post('/login', userControllers.userLogin);
 
 module.exports = router;

@@ -2,10 +2,11 @@ import createWidget from '../shared/createWidget.js';
 import { cartItem } from '../models/cartItem.js';
 
 export class Cart {
-  constructor(parent) {
-    this.url = `http://localhost:3003/api/users/`;
+  constructor(parent, userId) {
+    this.url = `http://localhost:3003/api/users`;
     this.token = sessionStorage.getItem("token");
     this.parent = parent;
+    this.userId = userId;
     this.localList = [...parent.children].map(i => i.innerText);
     this.counter = document.getElementById('cart-counter');
     this.headers = {
@@ -33,12 +34,16 @@ export class Cart {
 
   // method for adding items to the cart
   add = (itemId, handlers, IDs) => {
-    fetch(this.url, {
-      method: 'POST',
+    fetch(`${this.url}/${this.userId}`, {
+      method: 'PUT',
       headers: this.headers,
-      body: JSON.stringify({ itemId })
+      body: JSON.stringify({ 
+        _id: this.userId, 
+        cart: [...this.currentCart, itemId]
+      })
     })
       .then(r => r.json())
+      .then(r => console.log(r.cart))
       .then(data => {
         createWidget(
           'li',
