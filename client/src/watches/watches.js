@@ -1,14 +1,12 @@
-// User class
-import { User } from '../../queries/user.js';
-// Cart class
+// Cart controller
 import { Cart } from '../../queries/cart.query.js';
-// Watches class
+// Watches controller
 import { Watches } from "../../queries/watches.query.js";
-// Filter class
+// Filter controller
 import { Filter } from '../../queries/filter.js';
 
 
-// Wrap everything in a IIFE so that we don't polute the global scope
+// Wrap everything in a IIFE to keep the global scope clean
 (function() {
 
   // Get the parent element where the list widgets will be appended
@@ -19,14 +17,13 @@ import { Filter } from '../../queries/filter.js';
   const filterWrapp = document.getElementById('collapseOne');
 
 
-  // Instantiate User widget
-  const user = new User();
   // Instantiate Cart widget
   const cart = new Cart(cartWrapper);
   // Instantiate Filter widget
   const filter = new Filter(filterWrapp);
 
-  // Event handler 
+
+  // LOCAL Event handler 
   const showDetails = id => window.location.assign(`/client/src/watches/watch.html?id=${id}`);
   // Array of event handlers
   const handlers = [ showDetails, cart.add ];
@@ -53,8 +50,11 @@ import { Filter } from '../../queries/filter.js';
   filter.getNames();
   // append the filter widget to the DOM
   filter.use();
+  // fetch initial cart values on page load
+  cart.get()
 
 
+  // RENDER the watches widget
   if (searchString) {
     // search for a specific term, fetch a list of all occurences and render to DOM
     watches.search(searchString);
@@ -67,15 +67,17 @@ import { Filter } from '../../queries/filter.js';
   }
 
 
-  // add on hover behaviour for every watch card buttons
+  // add on hover behaviour for watch card buttons
   const onHover = e => {
     let els = e.target.querySelectorAll('a');
     els.forEach(el => el.classList.remove('hidden'));
   }
+  // add on leave behaviour for watch card buttons
   const onLeave = e => {
     let els = e.target.querySelectorAll('a');
     els.forEach(el => el.classList.add('hidden'));
   }
+  // attach event listeners to the watch cards list that will callback above methods
   listWrapp.addEventListener('mouseover', onHover);
   listWrapp.addEventListener('mouseleave', onLeave);
 

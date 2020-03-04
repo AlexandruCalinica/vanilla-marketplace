@@ -1,32 +1,39 @@
-let email = "";
-let password = "";
+// User controller
+import { User } from './queries/user.js';
 
-let link = "http://localhost:3003";
-let btn = document.getElementById("signin");
-let form = document.getElementById("login-form");
-let inputs = Object.values(document.querySelectorAll("input"));
 
-form.addEventListener("keyup", handleInput);
-btn.addEventListener("click", e => {
-  e.preventDefault();
-  signup(link, email, password);
-});
+// Wrap everything in a IIFE to keep the global scope clean
+(function() {
 
-function handleInput(e) {
-  if (e.target.name === "email") {
-    email = e.target.value;
-  } else {
-    password = e.target.value;
-  }
-}
+  // variable which will store the email value
+  let email = "";
+  // variable which will store the password vlue
+  let password = "";
+  // Get the button element where we'll listen for click events
+  let btn = document.getElementById("signin");
+  // Get the form element where we'll listen for keyup events
+  let form = document.getElementById("login-form");
 
-function signup(url, email, password) {
-  fetch(`${url}/api/auth/login`, {
-    method: "POST",
-    body: JSON.stringify({ email, password })
-  })
-    .then(r => r.json())
-    .then(({ token }) => sessionStorage.setItem("token", token))
-    .then(r => window.location.assign("/client/src/watches/watches.html"))
-    .catch(err => console.error(err));
-}
+  // Instantiate User widget
+  const user = new User();
+
+  // LOCAL method that gets the value from the event argument
+  function handleInput(e) {
+    // if the target name attribute is === 'email'
+    if (e.target.name === "email") {
+      // store the value to the 'email' variable
+      email = e.target.value;
+    }
+    // if the target name attribute is === 'password'
+    if (e.target.name === 'password') {
+      // store the value to the 'password' variable
+      password = e.target.value;
+    }
+  };
+
+  // attach event listener which will callback the handleInput() method
+  form.addEventListener("keyup", handleInput);
+  // attach event listener that will trigger the signup() method from the user instance
+  btn.addEventListener("click", e => user.signup(e, email, password));
+
+})()

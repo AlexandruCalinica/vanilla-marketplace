@@ -2,13 +2,13 @@ import createWidget from '../shared/createWidget.js';
 import { cartItem } from '../models/cartItem.js';
 
 export class Cart {
-  constructor(parent, userId) {
+  constructor(parent) {
     this.url = `http://localhost:3003/api/users`;
     this.token = sessionStorage.getItem("token");
-    this.parent = parent;
-    this.userId = userId;
-    this.localList = [...parent.children].map(i => i.innerText);
+    this.userId = sessionStorage.getItem('userId');
     this.counter = document.getElementById('cart-counter');
+    this.parent = parent;
+    this.currentIDList = [];
     this.headers = {
       Authorization: `Bearer ${this.token}`,
       'Content-Type': 'application/json'      
@@ -32,41 +32,67 @@ export class Cart {
     this.counter.innerText = `${n + 1}`;
   }
 
-  // method for adding items to the cart
-  add = (itemId, handlers, IDs) => {
-    fetch(`${this.url}/${this.userId}`, {
-      method: 'PUT',
-      headers: this.headers,
-      body: JSON.stringify({ 
-        _id: this.userId, 
-        cart: [...this.currentCart, itemId]
-      })
-    })
+  clearDOM() {
+    this.parent.innerHTML = '';
+  }
+
+  // method for getting a user's cart
+  get() {
+    fetch(`${this.url}/${this.userId}/cart`, {headers: this.headers})
       .then(r => r.json())
-      .then(r => console.log(r.cart))
-      .then(data => {
+      .then(r => {
+        this.currentIDList = r.map(i => i._id);
+        this.clearDOM();
+        return r;
+      })
+      .then(data => data.map(el => 
         createWidget(
           'li',
           'd-flex justify-content-between p-4',
           cartItem,
           this.parent,
-          data,
-          handlers,
-          IDs
-        );
-        this.incrementCounter();
+          el,
+          [this.remove],
+          ['remove']
+      )))
+      .catch(err => console.error(err));
+  }
+
+  // method for adding items to the cart
+  add = (itemId) => {
+    fetch(`${this.url}/${this.userId}`, {
+      method: 'PUT',
+      headers: this.headers,
+      body: JSON.stringify({ 
+        _id: this.userId, 
+        cart: [...this.currentIDList, itemId]
+      })
+    })
+      .then(r => r.json())
+      .then(r => {
+        this.get();
       })
       .catch(err => console.log(err))
   }
 
   // method to remove an item from the cart
   remove = (itemId) => {
-    fetch(this.url, {
-      method: 'DELETE',
+    console.log(itemId);
+    console.log(this.currentIDList);
+    this.currentIDList = this.currentIDList.filter(id => id !== itemId);
+    console.log(this.currentIDList);
+    fetch(`${this.url}/${this.userId}`, {
+      method: 'PUT',
       headers: this.headers,
-      body: JSON.stringify({ itemId })
+      body: JSON.stringify({ 
+        _id: this.userId, 
+        cart: this.currentIDList
+      })
     })
-    .then(r => r.json())
-    .catch(err => console.error(err));
+      .then(r => r.json())
+      .then(r => {
+        this.get();
+      })
+      .catch(err => console.log(err))
   }
 }
