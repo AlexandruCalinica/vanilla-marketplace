@@ -77,7 +77,7 @@ export const watchDetails = (watch) => (`
         <h1 class="lead">${watch.name}</h1>
         <h1 class="display-4">${watch.price.$numberDecimal}€</h1>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <button class="btn btn-primary" id="add-${watch._id}">Add to cart</button>
       </div>
     </div>
   </div>

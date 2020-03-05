@@ -18,20 +18,17 @@ export class Cart {
   // function that checks if an id exists in the array list
   checkId = itemId => this.localList.find(i => i === itemId);
 
-  // method to increment counter value
-  incrementCounter = () => {
-    this.counter.style.visibility = 'visible';
-    let n = parseInt(this.counter.innerText);
-    this.counter.innerText = `${n + 1}`;
+  // method to set and display the counter value
+  count = () => {
+    if (this.currentIDList.length > 0) {
+      this.counter.style.visibility = 'visible';
+      this.counter.innerText = this.currentIDList.length;
+    } else {
+      this.counter.style.visibility = 'hidden';
+    }
   }
 
-  // method to decrement counter value
-  decrementCounter = () => {
-    this.counter.style.visibility = 'visible';
-    let n = parseInt(this.counter.innerText);
-    this.counter.innerText = `${n + 1}`;
-  }
-
+  // method for emptying the parent element before refreshing the list and re-rendering
   clearDOM() {
     this.parent.innerHTML = '';
   }
@@ -55,6 +52,7 @@ export class Cart {
           [this.remove],
           ['remove']
       )))
+      .then(data => this.count())
       .catch(err => console.error(err));
   }
 
@@ -71,6 +69,7 @@ export class Cart {
       .then(r => r.json())
       .then(r => {
         this.get();
+        this.count();
       })
       .catch(err => console.log(err))
   }

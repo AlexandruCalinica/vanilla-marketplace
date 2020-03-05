@@ -14,15 +14,17 @@ export class Watch {
     this.IDs = IDs;
   }
 
-  get(id, parent, widget) {
+  get(id, widget) {
     fetch(`${this.url}/${id}`, {headers: this.headers})
     .then(r => r.json())
     .then(data => createWidget(
       'div',
       'watch-details',
       widget,
-      parent,
-      data
+      this.parent,
+      data,
+      this.IDs,
+      this.handlers
     ))
     .catch(err => console.error(err));
   }
