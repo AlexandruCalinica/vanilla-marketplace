@@ -38,7 +38,7 @@ After the installation is done, open a terminal or powershell and run:
 ```sh
 node -v
 ```
-to verify that the installation was successfull. 
+to verify that the installation was successful. 
 
 ### Install MongoDB
 In order to run the MongoDB database efficiently across various operating systems we're going to deploy and run a docker image containing the official MongoDB instalation. 
@@ -51,7 +51,7 @@ After the installation is done, open a terminal or powershell and run:
 ```sh
 docker -v
 ```
-to verify that the installation was successfull.
+to verify that the installation was successful.
 
 The last step required is to create a new account on https://hub.docker.com/. Use the account credentials to authenticate with the Docker Desktop application.
 
