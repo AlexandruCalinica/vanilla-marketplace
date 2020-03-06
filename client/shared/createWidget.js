@@ -18,9 +18,14 @@ export default function createWidget(type, className, innerHtml, parent, apiData
 
   if (handlers && ids) {
     for (let i = 0; i < ids.length; i ++) {
-      let btn = document.getElementById(`${ids[i]}-${_id}`);
-      
-      btn.addEventListener('click', () => handlers[i](_id));
+      if (apiData.item) {
+        // handling event listeners for cart items because the _id value required is nested
+        let btn = document.getElementById(`${ids[i]}-${apiData.item._id}`);
+        btn.addEventListener('click', () => handlers[i](apiData.item._id));
+      } else {
+        let btn = document.getElementById(`${ids[i]}-${_id}`);
+        btn.addEventListener('click', () => handlers[i](_id));
+      }
     };
   }
 }

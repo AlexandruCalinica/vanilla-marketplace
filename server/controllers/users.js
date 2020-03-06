@@ -49,7 +49,7 @@ exports.addToCart = (req, res) => {
 }
 
 exports.getUser = (req, res) => {
-  userQuery = User.findById(req.params.id).populate("cart")
+  userQuery = User.findById(req.params.id).populate("cart.item")
     .then(result => {
       if (result) {
         res.status(200).json(result);
@@ -63,7 +63,7 @@ exports.getUser = (req, res) => {
 }
 
 exports.getCart = (req, res) => {
-  userQuery = User.findById(req.params.id).populate("cart")
+  userQuery = User.findById(req.params.id).populate("cart.item")
     .then(result => {
       if (result) {
         res.status(200).json(result.cart);

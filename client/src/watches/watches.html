@@ -47,7 +47,16 @@
                     <span class="badge badge-pill badge-warning" id="cart-counter">0</span>
                   </i>
                 </button>
-                <ul class="dropdown-menu" id="cart" aria-labelledby="dropdownMenu2"></ul>
+                <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu2">
+                  <h6 class="dropdown-header">Selected items</h6>
+                  <div class="dropdown-divider"></div>
+                  <div id="cart"></div>
+                  <div class="dropdown-divider"></div>
+                  <h6 class="dropdown-header">
+                    <p>TOTAL: </p>
+                    <p id="total"></p>
+                  </h6>
+                </ul>
               </div>
             </li>
             
@@ -110,60 +119,7 @@
                   </div>
               </div>
 
-              <div class="accordion d-flex flex-column" id="accordion2">
-                <h2 class="mb-0">
-                  <button class="btn btn-link text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <small>MODEL</small>
-                  </button>
-                </h2>
-
-                <div id="collapseTwo" class="collapse show" aria-labelledby="model" data-parent="#accordion2">
-                  <div class="d-flex flex-column">
-                    <div class="form-check-inline mr-0">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
-                      <label class="form-check-label" for="defaultCheck6">
-                        <small>Model 1</small>
-                      </label>
-                      <span class="flex-grow-1"></span>
-                      <p class="m-0"><small>(1)</small></p>
-                    </div>
-                    <div class="form-check-inline mr-0">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck7">
-                      <label class="form-check-label" for="defaultCheck7">
-                        <small>Model 2</small>
-                      </label>
-                      <span class="flex-grow-1"></span>
-                      <p class="m-0"><small>(3)</small></p>
-                    </div>
-                    <div class="form-check-inline mr-0">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck8">
-                      <label class="form-check-label" for="defaultCheck8">
-                        <small>Model 3</small>
-                      </label>
-                      <span class="flex-grow-1"></span>
-                      <p class="m-0"><small>(5)</small></p>
-                    </div>
-                    <div class="form-check-inline mr-0">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
-                      <label class="form-check-label" for="defaultCheck9">
-                        <small>Model 4</small>
-                      </label>
-                      <span class="flex-grow-1"></span>
-                      <p class="m-0"><small>(2)</small></p>
-                    </div>
-                    <div class="form-check-inline mr-0">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
-                      <label class="form-check-label" for="defaultCheck10">
-                        <small>Model 5</small>
-                      </label>
-                      <span class="flex-grow-1"></span>
-                      <p class="m-0"><small>(2)</small></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion d-flex flex-column" id="accordion3">
+              <!-- <div class="accordion d-flex flex-column" id="accordion3">
                 <h2 class="mb-0">
                   <button class="btn btn-link text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <small>GENDER</small>
@@ -190,9 +146,9 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
-              <button type="submit" class="btn btn-primary">filter</button>
+              <button type="submit" class="btn btn-success mt-4"><small>APPLY FILTER</small></button>
               </form>
 
             </div>

@@ -5,7 +5,12 @@ const userSchema = mongoose.Schema({
   name: String,
   surname: String,
   password: String,
-  cart: [ { type: mongoose.Schema.Types.ObjectId, ref: "Watch" } ]
+  cart: [ 
+    { 
+      item: { type: mongoose.Schema.Types.ObjectId, ref: "Watch" },
+      amount: { type: Number }
+    }
+  ]
 })
 
 module.exports = mongoose.model('User', userSchema);
