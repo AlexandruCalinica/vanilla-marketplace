@@ -2,12 +2,12 @@ export const watchDetails = (watch) => (`
 <div class="row">
   <div class="col-md-8">
     <ul class="list-group">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span class="lead">Price</span>
+      <li class="list-group-item d-flex justify-content-center align-items-center">
+        <img src="${watch.image}" width="550"/>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <span class="lead">Description</span>
-        ${watch.description}
+        <span class="ml-5">${watch.description}</span>
       </li>
       <h6 class="lead pt-3"><small>INFO</small></h6>
       <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -76,8 +76,7 @@ export const watchDetails = (watch) => (`
       <div class="card-body">
         <h1 class="lead">${watch.name}</h1>
         <h1 class="display-4">${watch.price.$numberDecimal}€</h1>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <button class="btn btn-primary" id="add-${watch._id}">Add to cart</button>
+        <button class="btn btn-success w-100" id="add-${watch._id}">Add to cart</button>
       </div>
     </div>
   </div>

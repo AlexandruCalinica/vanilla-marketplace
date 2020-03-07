@@ -1,3 +1,4 @@
+const path = require("path");
 const cors = require("cors")
 const express = require("express")
 const jwt = require("jsonwebtoken")
@@ -17,23 +18,16 @@ mongoose.connect('mongodb://localhost/marketplace', { useNewUrlParser: true, use
 
 mongoose.set('useCreateIndex', true);
 
-const auth = require("./auth")
-const todos = require("./todos")
-// const watches = require("./watches")
-const authorizedMiddleware = require("./authorized")
-const cart = require("./cart")
-
 const PORT = 3003
 const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use("/api/auth", auth)
+app.use("/images", express.static(path.join("server/images")));
 app.use("/api/users", usersRoutes)
-app.use("/api/todos", authorizedMiddleware, todos)
 app.use("/api/watches", watchesRoutes)
-app.use('/api/cart', authorizedMiddleware, cart)
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`)

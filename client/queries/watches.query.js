@@ -1,6 +1,7 @@
 import createWidget from "../shared/createWidget.js";
 import watchesCard from "../src/watches/widgets/watchCard.js";
 
+
 export class Watch {
   constructor(parent, handlers, IDs) {
     this.url = `http://localhost:3003/api/watches`;
@@ -30,17 +31,18 @@ export class Watch {
   }
 
   create(data) {
-    fetch(this.url, {
+    fetch(`${this.url}/add`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(data)
     })
     .then(r => r.json())
+    .then(() => window.location.assign('/client/src/watches/watches.html'))
     .catch(err => console.error(err));
   }
 
   delete(id) {
-    fetch(this.url, {
+    fetch(`${this.url}/`, {
       method: 'DELETE',
       headers: this.headers,
       body: JSON.stringify({ id })

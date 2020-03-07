@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>To Do</title>
+    <title>Browse Watches</title>
     <script src="https://kit.fontawesome.com/94a1553214.js" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand lead" href="#">WATCHER</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,55 +34,40 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="#"
-                >Home <span class="sr-only">(current)</span></a
+                >Browse <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="/client/src/admin/admin.html">Account</a>
             </li>
             <li class="nav-item">
               <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
                   <i class="fas fa-shopping-cart">
                     <span class="badge badge-pill badge-warning" id="cart-counter">0</span>
                   </i>
                 </button>
-                <ul class="dropdown-menu shadow" aria-labelledby="dropdownMenu2">
+                <ul class="dropdown-menu shadow" id="dropdown-ul" aria-labelledby="dropdownMenu2">
                   <h6 class="dropdown-header">Selected items</h6>
                   <div class="dropdown-divider"></div>
                   <div id="cart"></div>
                   <div class="dropdown-divider"></div>
-                  <h6 class="dropdown-header">
+                  <!-- <h6 class="dropdown-header">
                     <p>TOTAL: </p>
                     <p id="total"></p>
-                  </h6>
+                  </h6> -->
                 </ul>
               </div>
+            </li>
+            <li class="nav-item">
+              <a id="sign-out" class="btn">
+                <i class="fas fa-sign-out-alt"></i>
+              </a>
             </li>
             
           </ul>
           </form>
         </div>
-      </div>
-    </nav>
-
-    <nav class="navbar shadow-sm p-4">
-      <div class="categoryList">
-        <a href="" class="text-decoration-none">
-          <h6 class="categoryItem">Category 1</h6>
-        </a>
-        <a href="" class="text-decoration-none">
-          <h6 class="categoryItem">Category 2</h6>
-        </a>
-        <a href="" class="text-decoration-none">
-          <h6 class="categoryItem">Category 3</h6>
-        </a>
-        <a href="" class="text-decoration-none">
-          <h6 class="categoryItem">Category 4</h6>
-        </a>
-        <a href="" class="text-decoration-none">
-          <h6 class="categoryItem">Category 5</h6>
-        </a>
       </div>
     </nav>
 
@@ -119,81 +104,24 @@
                   </div>
               </div>
 
-              <!-- <div class="accordion d-flex flex-column" id="accordion3">
-                <h2 class="mb-0">
-                  <button class="btn btn-link text-decoration-none" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                    <small>GENDER</small>
-                  </button>
-                </h2>
-
-                <div id="collapseThree" class="collapse show" aria-labelledby="model" data-parent="#accordion3">
-                  <div class="d-flex flex-column">
-                    <div class="form-check-inline mr-0">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
-                      <label class="form-check-label" for="defaultCheck11">
-                        <small>MALE</small>
-                      </label>
-                      <span class="flex-grow-1"></span>
-                      <p class="m-0"><small>(12)</small></p>
-                    </div>
-                    <div class="form-check-inline mr-0">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
-                      <label class="form-check-label" for="defaultCheck12">
-                        <small>FEMALE</small>
-                      </label>
-                      <span class="flex-grow-1"></span>
-                      <p class="m-0"><small>(7)</small></p>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
               <button type="submit" class="btn btn-success mt-4"><small>APPLY FILTER</small></button>
               </form>
 
             </div>
           </div>
           <div class="col-sm-9 mt-3">
-            <h1 class="lead ml-2">Browsing products for Rolex - 300 results</h1>
+            <h1 class="lead ml-2">Browsing Watches</h1>
             <form class="mb-3 p-2">
               <div class="form-row">
                 <div class="col-md-3">
-                  <label for="exampleFormControlSelect1"><small>Sort by</small></label>
-                  <select class="form-control form-control-sm formSelect" id="exampleFormControlSelect1">
-                    <option>Price: Low-High</option>
-                    <option>Price: High-Low</option>
-                  </select>
                 </div>
                 <div class="col-md-3">
-                  <label for="exampleFormControlSelect1"><small>Results per page</small></label>
-                  <select class="form-control form-control-sm formSelect" id="exampleFormControlSelect2">
-                    <option>10</option>
-                    <option>15</option>
-                    <option>20</option>
-                    <option>25</option>
-                    <option>50</option>
-                  </select>
                 </div>
               </form>
             </div>
             <div class="list-group" id="watches-wrapp">
             </div>
 
-
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-end mt-4 mr-2">
-                <li class="page-item disabled"><span class="page-link"><small>page 1 of 2</small></span></li>
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
 

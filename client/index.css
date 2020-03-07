@@ -45,7 +45,7 @@ body {
   border-radius: 4px;
 }
 
-#login-form {
+#login-form, #signup-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,5 +70,10 @@ body {
 }
 
 #cart {
-  width: 350px;
+  width: 500px;
+}
+
+.fa-sign-out-alt {
+  color: white;
+  font-size: 18px;
 }

@@ -1,6 +1,7 @@
 const express = require("express")
 const watchesController = require("../controllers/watches.js");
 const router = express.Router();
+const extractFile = require("../middlewares/file");
 
 router.get('/', watchesController.getWatches);
 router.get('/:id', watchesController.getWatch);

@@ -1,4 +1,7 @@
 const Watch = require("../models/watch");
+const Chance = require("chance");
+
+const chance = new Chance();
 
 exports.getWatch = (req, res, next) => {
   Watch.findById(req.params.id)
@@ -81,13 +84,15 @@ exports.getBrands = (req, res, next) => {
 }
 
 exports.createWatch = (req, res, next) => {
-  // const url = req.protocol + "://" + req.get("host");
+  
   console.log(req.body);
   const watch = new Watch({
     price: req.body.price,
     name: req.body.name,
     description: req.body.description,
-    image: req.body.image,
+    image: chance.pickone([
+      'https://www.diamondsourcenyc.com/wp-content/uploads/2014/11/116710LN.jpg'
+    ]),
     info: {
       listingNumber: req.body.info.listingNumber,
       referenceNumber: req.body.info.referenceNumber,
@@ -132,7 +137,7 @@ exports.createWatch = (req, res, next) => {
 }
 
 exports.updateWatch = (req, res, next) => {
-
+  
 }
 
 exports.deleteWatch = (req, res, next) => {

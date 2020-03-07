@@ -15,8 +15,6 @@ export class Cart {
     }
   }
 
-  // function that checks if an id exists in the array list
-  checkId = itemId => this.currentIDList.find(i => i === itemId);
   // function that finds an index of a cart item by _id value
   getIndex = itemId => { 
     let arr = this.currentIDList;
@@ -29,13 +27,58 @@ export class Cart {
     }
     return res;
   }
+
   // method for emptying the parent element before refreshing the list and re-rendering
   clearDOM = () => this.parent.innerHTML = '';
 
-  updateAmount = (index) => { 
-    console.log('index', index);
-    console.log(this.currentIDList[index]);
+  // method for increasing the amount value by 1
+  increaseAmount = itemId => {
+    let index = this.getIndex(itemId);
     this.currentIDList[index].amount += 1;
+  }
+  // method for decreasing the amount value by 1
+  decreaseAmount = itemId => {
+    let index = this.getIndex(itemId);
+    if (this.currentIDList[index].amount > 1) {
+      this.currentIDList[index].amount -= 1;
+    }
+  }
+
+  
+  minus = itemId => {
+    this.decreaseAmount(itemId);
+    fetch(`${this.url}/${this.userId}`, {
+      method: 'PUT',
+      headers: this.headers,
+      body: JSON.stringify({ 
+        _id: this.userId, 
+        cart: this.currentIDList
+      })
+    })
+      .then(r => r.json())
+      .then(() => {
+        // get the updated cart list from the server and render it to the DOM
+        this.get();
+      })
+      .catch(err => console.log(err));
+  }
+
+  plus = itemId => {
+    this.increaseAmount(itemId);
+    fetch(`${this.url}/${this.userId}`, {
+      method: 'PUT',
+      headers: this.headers,
+      body: JSON.stringify({ 
+        _id: this.userId, 
+        cart: this.currentIDList
+      })
+    })
+      .then(r => r.json())
+      .then(() => {
+        // get the updated cart list from the server and render it to the DOM
+        this.get();
+      })
+      .catch(err => console.log(err));
   }
 
   // method to set and display the counter value
@@ -51,15 +94,14 @@ export class Cart {
     }
   }
 
+  
 
   // method for adding items to the cart
   add = (itemId) => {
     // check if the item already exists in the list
     if (this.getIndex(itemId) !== -1) {
-      // console.log(this.currentIDList);
-      console.log(this.getIndex(itemId));
       // if it exists => update just the 'amount' property
-      this.updateAmount(this.getIndex(itemId));
+      this.increaseAmount(itemId);
     }
     // PUT request to the server for updating a user's cart list
     fetch(`${this.url}/${this.userId}`, {
@@ -111,7 +153,7 @@ export class Cart {
       .then(r => r.json())
       .then(r => {
         // map the response to a new array that we'll use as payload for PUT requests
-        // when adding or removing items
+        // when adding, removing items or updating amounts
         this.currentIDList = r.map(i => ({item: i.item._id, amount: i.amount}));
         // clear the DOM by default prior to generating and appending existing items in the DOM
         this.clearDOM();
@@ -122,13 +164,13 @@ export class Cart {
         // map the response to this function call in order to generate cart item widgets
         // attach event handlers and append to DOM
         createWidget(
-          'li',
+          'div',
           'd-flex justify-content-between align-items-baseline p-4',
           cartItem,
           this.parent,
           el,
-          [this.remove],
-          ['remove']
+          [this.remove, this.minus, this.plus],
+          ['remove', 'minus', 'plus']
       )))
       // update the counter element's value to resemble the freshly fetched list length
       .then(() => this.count())

@@ -4,6 +4,10 @@ import { Watch } from "../../queries/watches.query.js";
 import { Cart } from '../../queries/cart.query.js';
 // html widget body
 import { watchDetails } from "./widgets/watchDetails.js";
+// dropdown behaviour fix for cart widget
+import dropdownFix from '../../shared/dropdownFix.js';
+// Sign Out utility
+import { signOut } from '../../shared/signOut.js';
 
 (function() {
 
@@ -15,6 +19,8 @@ import { watchDetails } from "./widgets/watchDetails.js";
   const watchWrapper = document.getElementById('app');
   // Get the parent element where the cart items will be appended
   const cartWrapper = document.getElementById("cart");
+  // Get the signOut button element
+  const signOutBtn = document.getElementById('sign-out');
 
   // Instantiate Cart widget
   const cart = new Cart(cartWrapper);
@@ -25,5 +31,9 @@ import { watchDetails } from "./widgets/watchDetails.js";
   watch.get(id, watchDetails);
   // fetch initial cart values on page load
   cart.get()
+
+  signOutBtn.addEventListener('click', signOut);
+
+  dropdownFix();
 
 })()
